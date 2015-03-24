@@ -1,6 +1,9 @@
 <?php namespace App\Services;
 
 use App\User;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 
@@ -29,11 +32,23 @@ class Registrar implements RegistrarContract {
 	 */
 	public function create(array $data)
 	{
-		return User::create([
+		$user = User::create([
 			'name' => $data['name'],
 			'email' => $data['email'],
+            'database' => $data['name'] . '.sqlite',
 			'password' => bcrypt($data['password']),
 		]);
+
+        // Create the new user sqlite database
+        Storage::put($user->database, '');
+
+        // Set the tenant connection to the users own database
+        Config::set('database.connections.tenantdb.database', storage_path().$user->database);
+
+        // Run migrations for the new db
+        Artisan::call('migrate', ['--database' => 'tenantdb', 'path' => 'database/migrations/tenant']);
+
+        return $user;
 	}
 
 }
