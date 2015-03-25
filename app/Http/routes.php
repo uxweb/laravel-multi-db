@@ -24,3 +24,13 @@ Route::get('products', [
     'as' => 'products.index',
     'uses' => 'ProductsController@index',
 ]);
+
+Route::get('products/create', [
+    'as' => 'products.create',
+    'uses' => 'ProductsController@create',
+]);
+
+Route::post('products', [
+    'as' => 'products.store',
+    'uses' => 'ProductsController@store',
+]);
