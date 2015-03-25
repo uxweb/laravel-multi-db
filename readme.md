@@ -1,23 +1,46 @@
-## Laravel PHP Framework
+## Multi Database App with the Laravel Framework 5.0
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+This example shows how any registered user can have its own database for one instance of an application.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+## Installation
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+1. Clone the Repo:
+    ```
+    git clone https://github.com/uxweb/laravel-multi-db.git laravel-multi-db
+    ```
+2. Install Dependencies:
+    ```
+    cd laravel-multi-db
+    
+    composer install
+    ```
+3. Run Migrations:
+    ```
+    php artisan migrate
+    ```
+4. Serve the app locally:
+    ```
+    php artisan migrate
+    ```
 
-## Official Documentation
+## Official Documentation of Used Components
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+[Middleware](http://laravel.com/docs/5.0/middleware)
+Used to set the connection's database to the user's own database.
+
+[Filesystem](http://laravel.com/docs/5.0/filesystem)
+Used to create an empty database on user registration.
+
+[Configuration Facade](http://laravel.com/docs/5.0/facades#facade-class-reference).
+Used to change a connections default database in configuration.
+
+[Artisan CLI](http://laravel.com/docs/5.0/artisan#calling-commands-outside-of-cli).
+Used to run migrations/seeders on the user's own database.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Thank you for considering contributing to this little project!.
 
 ### License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+This project is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
