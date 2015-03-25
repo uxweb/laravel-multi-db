@@ -1,6 +1,29 @@
 ## Multi Database App with the Laravel Framework 5.0
 
-This example shows how any registered user can have its own database for one instance of an application.
+This example shows how any registered user can have its own database for one instance of an application with the Laravel Framework.
+
+This kind of apps are called Multi-Tenant Applications because they use [Multi-Tenant Data Architecture](https://msdn.microsoft.com/en-us/library/aa479086.aspx).
+
+Using the power of Laravel 5 this demo:
+
+* Creates a new database for a registered user with a base schema (running a set of migrations)
+* Lets an authenticated user to access his own database data.
+
+## Considerations
+
+Any new model intended to be used on any database must set the connection property like this:
+
+```
+OtherModel.php
+
+protected $connection = 'tenantdb';
+```
+
+Any new migration intended to be part of the base schema for any database must be placed in:
+
+```
+database/migrations/tenant
+```
 
 ## Installation
 
