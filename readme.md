@@ -43,7 +43,7 @@ database/migrations/tenant
     ```
 4. Serve the app locally:
     ```
-    php artisan migrate
+    php artisan serve
     ```
 
 ## Official Documentation of Used Components
